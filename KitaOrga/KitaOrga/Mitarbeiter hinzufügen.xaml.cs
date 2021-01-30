@@ -66,19 +66,20 @@ namespace KitaOrga
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            //Login login = new Login();
-            //User user = login.getUser();
+            csvData data = new csvData();
+            Connection connection = new Connection(data.getPassword(), data.getUsername());
 
-            //Employee new_employee = new Employee(tb_Name.Text, tb_Gruppe.Text, tb_Stelle.Text, double.Parse(tb_Stunden.Text));
+            Employee new_employee = new Employee(tb_Name.Text, tb_Gruppe.Text, tb_Stelle.Text, double.Parse(tb_Stunden.Text));
 
-            //string sql_ma_hinzufügen = "INSERT INTO Mitarbeiter VALUES('" + new_employee.GetName() + "','" + new_employee.GetStelle() + "','" + new_employee.GetGruppe() + "'," + new_employee.GetStunden() + ");";
+            string sql_ma_hinzufügen = "INSERT INTO Mitarbeiter VALUES('" + new_employee.GetName() + "','" + new_employee.GetStelle() + "','" + new_employee.GetGruppe() + "'," + new_employee.GetStunden() + ");";
 
-            //MySqlCommand ma_hinzufügen = new MySqlCommand(sql_ma_hinzufügen);
+            MySqlCommand ma_hinzufügen = new MySqlCommand(sql_ma_hinzufügen);
 
 
 
-            //ma_hinzufügen.ExecuteNonQuery();
-            //connection.Close();
+            connection.Admin_connect().Open();
+            ma_hinzufügen.ExecuteNonQuery();
+            connection.Admin_connect().Close();
 
         }
     }

@@ -46,25 +46,10 @@ namespace KitaOrga
             user = new User(password, username);
         } 
 
-        public string Connection()
-        {
-            string admin_connection = "SERVER=127.0.0.1;" +
-                "DATABASE=KitaOrga;" +
-                "port=3306;" +
-                "UID=" + user.username +";" +
-                "PASSWORD=" + user.password +";" +
-                "SSLMODE=Preferred;";
-            return admin_connection;
-        }
 
-        public MySqlConnection Admin_connect()
-        {
-            MySqlConnection admin_connection = new MySqlConnection(Connection());
-            return admin_connection;
-        }
         internal User getUser()
         {
-            return user;
+            return user; 
         }
 
 
@@ -107,6 +92,33 @@ namespace KitaOrga
         }
     }
 
+    class Connection
+    {
+        private string username;
+        private string password;
+        public Connection(string password, string username)
+        {
+            this.password = password;
+            this.username = username;
+        }
+        public string Connect()
+        {
+            string admin_connection = "SERVER=127.0.0.1;" +
+                "DATABASE=KitaOrga;" +
+                "port=3306;" +
+                "UID=" + username + ";" +
+                "PASSWORD=" + password + ";" +
+                "SSLMODE=Preferred;";
+            return admin_connection;
+        }
+
+        public MySqlConnection Admin_connect()
+        {
+            MySqlConnection admin_connection = new MySqlConnection(Connect());
+            return admin_connection;
+        }
+    }
+
     public partial class MainWindow : Window
     {
 
@@ -129,13 +141,14 @@ namespace KitaOrga
             Login login = new Login(pwBox.Password, Tb_Benutzername.Text);
             User user = login.getUser();
             csvData data = new csvData();
+            Connection connection = new Connection(data.getPassword(), data.getUsername());
 
             MessageBox.Show(data.getUsername(), data.getPassword());
 
             try
             {
-                login.Admin_connect().Open();
-                login.Admin_connect().Close();
+                connection.Admin_connect().Open();
+                connection.Admin_connect().Close();
                 KitaOrga_MainWindow Mitarbeiter = new KitaOrga_MainWindow();
                 Mitarbeiter.Show();
                 this.Close();
@@ -149,15 +162,6 @@ namespace KitaOrga
 
 
 
-            //ListView MA = new ListView();
-
-            //List<string> Mitarbeiter_liste = new List<string>();
-            
-            
-            
-            //Mitarbeiter_liste.Add()
-
-            //Array [string] m
 
         }
 
