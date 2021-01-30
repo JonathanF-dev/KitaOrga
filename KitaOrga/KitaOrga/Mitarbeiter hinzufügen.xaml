@@ -1,0 +1,21 @@
+﻿<Window x:Class="KitaOrga.Mitarbeiter_hinzufügen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KitaOrga"
+        mc:Ignorable="d"
+        Title="Mitarbeiter_hinzufügen" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="87,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Stelle" HorizontalAlignment="Left" Height="23" Margin="87,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Gruppe" HorizontalAlignment="Left" Height="23" Margin="87,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Stunden" HorizontalAlignment="Left" Height="23" Margin="87,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Stelle" HorizontalAlignment="Left" Margin="25,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.527,2.425"/>
+        <Label x:Name="lb_Name" Content="Name" HorizontalAlignment="Left" Margin="25,122,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gruppe" HorizontalAlignment="Left" Margin="25,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.592,4.085"/>
+        <Label Content="Stunden" HorizontalAlignment="Left" Margin="25,262,0,0" VerticalAlignment="Top"/>
+        <Button Content="Hinzufügen" HorizontalAlignment="Left" Margin="87,313,0,0" VerticalAlignment="Top" Width="111" Height="38" Click="Button_Click"/>
+
+    </Grid>
+</Window>
